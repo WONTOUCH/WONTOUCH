@@ -14,7 +14,7 @@ import wontouch.api.domain.user.model.repository.UserProfileRepository;
 import wontouch.api.domain.user.model.service.AvatarService;
 import wontouch.api.domain.user.model.service.UserProfileService;
 import wontouch.api.global.dto.ResponseDto;
-
+// 원터치 화이팅
 @RestController
 @RequestMapping("/user-profile")
 @RequiredArgsConstructor
