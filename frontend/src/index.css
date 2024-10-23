@@ -1,0 +1,507 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 사용자가 웹 페이지를 볼 때, 브라우저가 페이지의 밝은(light) 또는 어두운(dark) 테마를 지원하도록 지정하는 속성 */
+  /* color-scheme: light dark; */
+
+  /* 문서 전체의 텍스트 색상을 지정 */
+  /* color: rgba(255, 255, 255, 0.87); */
+
+  /* 문서의 배경 색상을 지정 */
+  /* background-color: #242424; */
+
+  /* 브라우저가 글꼴을 자동으로 굵게(bold)하거나 기울임(italic)으로 만드는 것을 방지 */
+  font-synthesis: none;
+
+  /* 텍스트를 더 잘 읽을 수 있도록 브라우저에게 텍스트 렌더링을 최적화하라는 지시 */
+  text-rendering: optimizeLegibility;
+
+  /* 웹킷(WebKit) 기반 브라우저(주로 Safari나 Chrome)에서 폰트의 가장자리를 부드럽게 처리하여 더 선명하고 깨끗하게 보이도록 설정 */
+  -webkit-font-smoothing: antialiased;
+
+  /* macOS 시스템에서 파이어폭스 브라우저가 폰트의 가장자리를 회색으로 처리하여 부드럽게 렌더링하도록 설정하는 속성 */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  min-width: 720px;
+  min-height: 100vh;
+  overflow: hidden;
+
+  /* 드래그 방지 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  cursor: url('assets/icon/cursor_02.png'), auto;
+}
+
+button:hover {
+  cursor: url('assets/icon/cursor_hover.png'), auto;
+}
+
+button:active {
+  cursor: url('assets/icon/cursor_focus.png'), auto;
+}
+
+/* 드래그 허용 CSS */
+.draggable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+}
+
+@layer base {
+  /* font */
+  /* 던파 비트비트체 v2 */
+  @font-face {
+    font-family: 'DNFBitBitv2';
+    src: url('./fonts/woff/DNFBitBitv2.woff') format('woff'); /* 폰트 경로 재확인 */
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* 갈무리 시리즈 (목업 기준 11, 14 사용) */
+  @font-face {
+    font-family: 'Galmuri11';
+    font-style: normal;
+    src:
+      url(./fonts/woff/Galmuri11.woff) format('woff'),
+      url(./fonts/woff/GalmuriMono11.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Galmuri11-Bold';
+    font-style: normal;
+    src: url(./fonts/woff/Galmuri11-Bold.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Galmuri14';
+    font-style: normal;
+    src: url(./fonts/woff/Galmuri14.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Galmuri7';
+    font-style: normal;
+    src:
+      url(./fonts/woff/Galmuri7.woff) format('woff'),
+      url(./fonts/woff/GalmuriMono7.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: 'Galmuri9';
+    font-style: normal;
+    src:
+      url(./fonts/woff/Galmuri9.woff) format('woff'),
+      url(./fonts/woff/GalmuriMono9.woff) format('woff');
+  }
+
+  html {
+    font-family: 'DNFBitBitv2';
+    font-size: 1rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* 유저 이름 (흰글씨, 까만 테두리) */
+  .user-name {
+    color: #fff;
+    text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #333;
+    font-size: 16px;
+  }
+
+  /* 큰 글씨 (흰글씨, 까만 테두리) */
+  .white-title {
+    color: #fff;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #333;
+    font-size: 22px;
+  }
+
+  /* 초대 가능한 카드 */
+  .plus-invite {
+    color: #dac2a8;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #333;
+    font-size: 64px;
+  }
+
+  /* 방장 글씨 */
+  .host-user {
+    color: #fe0;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #eba900;
+    font-size: 30px;
+  }
+
+  /* 유저 준비 완료 글씨 */
+  .ready-user {
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #eba900;
+    font-size: 30px;
+    background: linear-gradient(180deg, #36eab5 12.5%, #fe0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 방 번호 */
+  .room-number {
+    color: #fe0;
+    text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #555;
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* 대기방 대기자 리스트 박스 / 채팅 박스 */
+  .waitingroom-brown-box {
+    border-radius: 20px;
+    border: 5px solid #896a65;
+    background: rgba(218, 194, 168, 0.9);
+    box-shadow: 0px 4px 10px 5px rgba(0, 0, 0, 0.25);
+    padding: 40px 0px 21px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  /* 민트색 타이틀 */
+  .mint-title {
+    color: #36eab5;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #10ab7d;
+    font-size: 36px;
+  }
+
+  /* 준비 버튼 */
+  .ready-button {
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100px;
+    padding: 26px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 5px solid #fff;
+    background: #36eab5;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #10ab7d;
+    font-size: 48px;
+  }
+  /* 준비 안됨 버튼 */
+  .unready-button {
+    display: flex;
+    flex-shrink: 0;
+    height: 100px;
+    width: 100%;
+    padding: 26px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 5px solid #fff;
+    background: #999;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    text-align: center;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #555;
+    font-size: 48px;
+  }
+
+  /* 흰테두리 레몬색 박스 */
+  .yellow-box {
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 5px solid #fff;
+    background: rgba(255, 254, 238, 0.9);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+  }
+
+  /* 친구 정보 (랭킹/초대/친구목록에 사용) */
+  .friend-box {
+    display: flex;
+    flex-shrink: 0;
+    width: 270px;
+    height: 42px;
+    padding: 5px 0px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border: 3px solid #896a65;
+    background: #dac2a8;
+  }
+}
+
+/* 갈색 input 태그 */
+.input-tag {
+  border-radius: 20px;
+  background: #e6e2c2;
+  display: flex;
+  align-items: center;
+}
+
+/* 프로필 이미지 */
+.profile-img {
+  background-color: #fffffe;
+  border-radius: 50%;
+  border: #ffffff solid 5px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* 갈색 박스 */
+.brown-box {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: #896a65 solid 3px;
+  background: #dac2a8;
+}
+
+/* 흰색 글씨 */
+.white-text {
+  color: #ffffff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+/* 방 목록 배경 */
+.list-box {
+  border-radius: 20px;
+  background: #e6e2c2;
+}
+
+/* 방 */
+.room-box {
+  border-radius: 20px;
+  border: 3px solid #896a65;
+  background: #dac2a8;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* 방 정보 */
+.room-info {
+  border-radius: 10px;
+  background: #896a65;
+}
+
+/* 환경 설정 박스 */
+.setting-box {
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: #896a65 solid 6px;
+  background: #dac2a8;
+}
+
+.setting-text {
+  color: #ffffff;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+
+.audio-on {
+  color: #36eab5;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #10ab7d;
+  background-color: #fffff8;
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.setting-list {
+  color: #ffffff;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  background-color: #fffff8;
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.version {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.ranking-box {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: #896a65 solid 3px;
+  background: #dac2a8;
+  padding-left: 5%;
+}
+
+.plus-friend {
+  color: #dac2a8;
+  text-align: end;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #896a65;
+}
+
+.friend-search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: white solid 5px;
+  background: #e8e7e2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.can-search-text {
+  color: #36eab5;
+  text-align: center;
+  -webkit-text-stroke-width: 0.9px;
+  -webkit-text-stroke-color: #000;
+  font-size: x-large;
+}
+
+.cant-search-text {
+  color: #d95353;
+  text-align: center;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: #000;
+  font-size: x-large;
+}
+
+.exp-background {
+  background-color: #fff;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.exp {
+  background-color: #36eab5;
+  border-radius: 20px;
+  border: 2px solid #fff;
+}
+
+.exp-text {
+  color: white;
+  text-align: center;
+  -webkit-text-stroke-width: 0.8px;
+  -webkit-text-stroke-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-input {
+  border-radius: 20px;
+  border: 1px solid #10ab7d;
+  background: #fff;
+}
+
+.level-text {
+  color: #fe0;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #555;
+}
+
+.cancel-button {
+  border-radius: 20px;
+  border: 3px solid #ff4242;
+  background: #fff;
+  color: #fff;
+  text-align: center;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #ff4242;
+}
+
+.logout-button {
+  border-radius: 20px;
+  border: 3px solid #10ab7d;
+  background: #36eab5;
+  color: #fff;
+  text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #10ab7d;
+}
+
+.mileage-text {
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #10ab7d;
+}
+
+.yellow-text {
+  color: #fff;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #eba900;
+}
+
+.yellow-text2 {
+  color: #ffee00;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #eba900;
+}
+
+.yellow-text3 {
+  color: #fff;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #eba900;
+}
+
+.result-textborder {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #000;
+}
+
+.result-userborder {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #0d7b5b;
+}
