@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import intro1 from '../../../assets/firstLogin/1st.png';
-import intro2 from '../../../assets/firstLogin/2nd.png';
-import intro3 from '../../../assets/firstLogin/3rd.png';
-import intro4 from '../../../assets/firstLogin/4th.png';
-import intro5 from '../../../assets/firstLogin/5th.png';
+import intro1 from '../../../assets/firstLogin/Frame1.png';
+import intro2 from '../../../assets/firstLogin/Frame2.png';
+import intro3 from '../../../assets/firstLogin/Frame3.png';
+import intro4 from '../../../assets/firstLogin/Frame4.png';
+import intro5 from '../../../assets/firstLogin/Frame5.png';
 import left from '../../../assets/icon/arrow_left.png';
 import right from '../../../assets/icon/arrow_right.png';
 
